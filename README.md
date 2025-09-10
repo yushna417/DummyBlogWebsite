@@ -16,16 +16,17 @@ A small posts application built as part of a frontend assessment. Uses JSONPlace
 git clone https://github.com/yushna417/DummyBlogWebsite.git
 cd BLOG_APP
 
-    Install dependencies:
 
+2. **Install Dependencies:**
+```bash
 npm install
 
-    Run the development server:
-
+3. **Run the development server:**
+```bash
 npm run dev
 
 
-    Open in browser:
+4. **Open in browser:**
 
 http://localhost:3000
 
