@@ -1,7 +1,6 @@
 "use client"
 
 import React, { useState } from "react";
-import axios from "axios";
 import { Ipost } from "@/types/postInterface";
 import Alert from "./alert";
 import api from "@/api/axios";
@@ -67,9 +66,9 @@ export default function ModalForm({ isOpen, onClose, onAddPost, onRemovePost }: 
       setBody("")
       onClose();
     }
-    catch(err: any) {
+    catch(err: unknown) {
       console.error(err);
-      setAlertInfo({  title: "Post Error", body: err.message || "Failed to create post" });
+      setAlertInfo({  title: "Post Error", body:  "Failed to create post" });
       onRemovePost(tempPost.id);
     }
     finally {

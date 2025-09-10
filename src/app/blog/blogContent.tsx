@@ -22,10 +22,12 @@ export default function Blog() {
   const [loading, setLoading] = useState<boolean>(false);
   const [error, setError] = useState("")
   const [currentPage, setCurrentPage] = useState<number>(1);
+  const [filteredPosts, setFilteredPosts] = useState<Ipost[]>([]);
   const postsPerPage = 10;
+
   const searchParams = useSearchParams();
   const searchQuery = searchParams.get("search") || "";
-  const [filteredPosts, setFilteredPosts] = useState<Ipost[]>([]);
+
 
 
   const [isModalOpen, setIsModalOpen] = useState(false);

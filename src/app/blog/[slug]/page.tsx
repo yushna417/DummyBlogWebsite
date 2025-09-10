@@ -10,11 +10,12 @@ import { IoArrowBackCircle } from "react-icons/io5";
 import { useRouter } from "next/navigation";
 import LoadingComponent from "@/app/component/loading";
 import EmptyPage from "@/app/component/empyPage";
+import Image from "next/image";
+import { AxiosError } from "axios";
 
 
 
 export default function BlogDetail() {
-  const { slug } = useParams<{ slug: string }>(); 
 
   const [post, setPost] = useState<Ipost | null>(null);
   const [comments, setComments] = useState<Icomments[]>([]);
@@ -22,6 +23,8 @@ export default function BlogDetail() {
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState("")
   const router = useRouter();
+
+   const { slug } = useParams<{ slug: string }>(); 
 
   useEffect(() => {
     if (!slug) return  ;
@@ -40,13 +43,12 @@ export default function BlogDetail() {
 
         const author = usersRes.data.find((u) => u.id === postRes.data.userId);
         setUser(author || null);
-      } catch (err:any) {
-        console.error("Failed to fetch blog details", err);
-         if (err.response?.status === 404) {
+      }catch (err: unknown) {
+        const axiosError = err as AxiosError;
+        if (axiosError.response?.status === 404) {
           setError("Post not found");
-        } else {
-          setError("Failed to fetch post");
         }
+        console.error("Failed to fetch blog details", axiosError);
       } finally {
         setLoading(false);
       }
@@ -65,7 +67,7 @@ export default function BlogDetail() {
     <div className="h-full w-full flex-col flex lg:px-16 px-5 py-28 items-start ">
       <button onClick={() => router.push(`/`)} className="focus:outline-none text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:ring-blue-300 font-medium rounded-lg flex items-center gap-x-2 text-sm px-3 py-2.5 mb-5 dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-900 "> <IoArrowBackCircle size={20} />Go back </button>
       <div className="flex flex-col items-center bg-white border border-gray-200 rounded-lg shadow-sm md:flex-row w-full hover:bg-gray-100 dark:border-gray-700 dark:bg-gray-800 dark:hover:bg-gray-700">
-        <img
+        <Image
           className="object-cover w-full rounded-t-lg h-80 lg:w-1/2 lg:rounded-none lg:rounded-s-lg"
           src="/blog.jpg"
           alt=""
@@ -108,7 +110,7 @@ export default function BlogDetail() {
               <div className="lg:col-span-9 col-span-7  font-sans lg:text-sm text-xs text-gray-500 dark:text-gray-300 mb-4">
                 {comment.email}
               </div>
-              <p className="text-gray-700 lg:col-span-9 col-span-7  dark:text-gray-200 italic lg:text-base text-sm">" {comment.body} "</p>
+              <p className="text-gray-700 lg:col-span-9 col-span-7  dark:text-gray-200 italic lg:text-base text-sm">&quot; {comment.body} &quot;</p>
 
             </div>
 
