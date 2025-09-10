@@ -41,7 +41,7 @@ const [allPosts, setAllPosts] = useState<Ipost[]>([]);
     <nav className="bg-white border-gray-200 dark:bg-gray-900 lg:px-10 px-0 fixed min-w-screen ">
       <div className="max-w-screen-xl flex flex-wrap items-center justify-between mx-auto p-4 sticky">
       <div  className="flex items-center lg:space-x-3 space-x-1 rtl:space-x-reverse">
-          <Image src="https://www.arcodify.com/img/arcodify-icon.png" className="h-8" alt='Logo'  />
+          <Image src="/logo.png" className="h-8" alt='Logo'  />
           <span className="self-center lg:text-2xl text-xl lg:font-semibold font-medium whitespace-nowrap dark:text-white">Arcodify</span>
       </div>
       
