@@ -6,7 +6,7 @@ A small posts application built as part of a frontend assessment. Uses JSONPlace
 ---
 
 ## **Live Demo (Optional)**
-
+# URL : https://dummy-blog-website.vercel.app/
 
 ---
 
