@@ -94,7 +94,7 @@ npm run start
 │   │   page.tsx
 │   │   
 │   ├───blog
-│   │   │   page.tsx
+│   │   │   blogContent.tsx
 │   │   │   
 │   │   └───[slug]
 │   │           page.tsx
