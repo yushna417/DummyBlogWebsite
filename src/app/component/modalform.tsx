@@ -31,7 +31,7 @@ export default function ModalForm({ isOpen, onClose, onAddPost, onRemovePost }: 
     }
 
     if (body.trim().length < 10 || body.trim(). length > 500){ 
-       return "Body must be between 10 and 500 characters.";
+       return "Description must be between 10 and 500 characters.";
     }
 
     return "";
