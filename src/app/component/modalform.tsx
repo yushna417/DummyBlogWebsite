@@ -81,10 +81,10 @@ export default function ModalForm({ isOpen, onClose, onAddPost, onRemovePost }: 
       <div className="relative p-4 w-full max-w-3xl">
         {alertInfo && <Alert  title={alertInfo.title} body={alertInfo.body} onClose={()=>setAlertInfo(null)} />}
 
-        <div className="relative rounded-lg shadow-lg bg-[#1c232d] shadow-gray-900 lg:p-7 border-gray-600 p-4">
+        <div className="relative rounded-lg shadow-lg dark:bg-[#1c232d] bg-gray-100 shadow-gray-900 lg:p-7 border-gray-600 p-4">
           
-          <div className="flex items-center justify-between p-4 border-b dark:border-gray-600 border-gray-200 rounded-t">
-            <h3 className="text-lg font-semibold text-gray-200 ">
+          <div className="flex items-center justify-between p-4 border-b dark:border-gray-600 border-gray-400 rounded-t">
+            <h3 className="text-lg font-semibold dark:text-gray-200 text-gray-800 ">
               Post a Blog
             </h3>
             <button
@@ -99,20 +99,20 @@ export default function ModalForm({ isOpen, onClose, onAddPost, onRemovePost }: 
               <div className="relative z-0 w-full mb-5 group">
                 <input type="text" value={title}
                 onChange={(e)=> setTitle(e.target.value)}
-                className="block py-2.5 px-0 w-full text-sm text-gray-900 bg-transparent border-0 border-b-2 border-gray-300 appearance-none dark:text-white dark:border-gray-600 dark:focus:border-blue-500 focus:outline-none focus:ring-0 focus:border-blue-600 peer" placeholder=" " required />
+                className="block py-2.5 px-0 w-full text-sm text-gray-900 bg-transparent border-0 border-b-2 border-gray-400 appearance-none dark:text-white dark:border-gray-600 dark:focus:border-blue-500 focus:outline-none focus:ring-0 focus:border-blue-600 peer" placeholder=" " required />
                 <label className="peer-focus:font-medium absolute text-sm text-gray-500 dark:text-gray-400 duration-300 transform -translate-y-6 scale-75 top-3 -z-10 origin-[0] peer-focus:start-0 rtl:peer-focus:translate-x-1/4 rtl:peer-focus:left-auto peer-focus:text-blue-600 peer-focus:dark:text-blue-500 peer-placeholder-shown:scale-100 peer-placeholder-shown:translate-y-0 peer-focus:scale-75 peer-focus:-translate-y-6">Title</label>
             </div>
            
             <textarea value={body} onChange={(e) => setBody(e.target.value)}
               placeholder="Description here ..."
-              className="w-full border rounded p-2 text-sm"
+              className="w-full border rounded p-2 text-sm focus:border-gray-500"
             />
             <button
               type="submit"
               disabled = {loading}
-              className="mx-auto bg-blue-700 text-white p-2 rounded hover:bg-blue-800"
+              className={`mx-auto bg-blue-700 text-white p-2 rounded hover:bg-blue-800 ${loading ? "animate-pulse": ""}`}
             >
-              {loading ? "publishing..." : "Publish"}
+              {loading ? "Publishing..." : "Publish"}
             </button>
           </form>
         </div>

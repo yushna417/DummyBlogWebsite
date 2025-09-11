@@ -27,7 +27,7 @@ export default function BlogDetail() {
    const { slug } = useParams<{ slug: string }>(); 
 
   useEffect(() => {
-    if (!slug) return  ;
+    if (!slug) setError("Post not found") ;
 
     const fetchData = async () => {
       try {
@@ -66,12 +66,15 @@ export default function BlogDetail() {
   return (
     <div className="h-full w-full flex-col flex lg:px-16 px-5 py-28 items-start ">
       <button onClick={() => router.push(`/`)} className="focus:outline-none text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:ring-blue-300 font-medium rounded-lg flex items-center gap-x-2 text-sm px-3 py-2.5 mb-5 dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-900 "> <IoArrowBackCircle size={20} />Go back </button>
-      <div className="flex flex-col items-center bg-white border border-gray-200 rounded-lg shadow-sm md:flex-row w-full hover:bg-gray-100 dark:border-gray-700 dark:bg-gray-800 dark:hover:bg-gray-700">
-        <Image
-          className="object-cover w-full rounded-t-lg h-80 lg:w-1/2 lg:rounded-none lg:rounded-s-lg"
+      <div className="flex flex-col items-center bg-gray-200 border border-gray-200 rounded-lg shadow-sm md:flex-row w-full hover:bg-gray-100 dark:border-gray-700 dark:bg-gray-800 dark:hover:bg-gray-700">
+        <div className="w-full relative rounded-t-lg h-80 lg:w-1/2 lg:rounded-none lg:rounded-s-lg object-cover">
+          <Image
+          className=" absolute object-cover"
           src="/blog.jpg"
-          alt=""
+          alt="blog" fill
         />
+        </div>
+        
         <div className="flex flex-col justify-between lg:p-8 p-3 leading-normal lg:w-1/2 w-full">
           <h5 className="mb-2 lg:text-2xl text-lg font-bold tracking-tight text-gray-900 dark:text-white">
             {post.title}
@@ -95,10 +98,10 @@ export default function BlogDetail() {
         {comments.map((comment) => (
           <div
             key={comment.id}
-            className="py-4 lg:px-8 px-2 rounded-lg bg-gray-50 dark:bg-gray-800 shadow-sm"
+            className="py-4 lg:px-8 px-2 rounded-lg bg-gray-200 dark:bg-gray-800 shadow-sm"
           >
             <div className="grid lg:grid-cols-10 grid-cols-8 lg:gap-x-0 gap-x-8 items-center">
-              <div className="row-span-3 col-span-1 flex items-center self-start justify-center lg:w-10 w-8 lg:h-10 h-8 overflow-hidden bg-gray-200 rounded-full dark:bg-gray-600">
+              <div className="row-span-3 col-span-1 flex items-center self-start justify-center lg:w-10 w-8 lg:h-10 h-8 overflow-hidden bg-gray-50 rounded-full dark:bg-gray-600">
                 <span className="lg:font-bold font-semibold text-gray-600 dark:text-gray-300">
                   {comment.name.charAt(0).toUpperCase()}
                 </span>
